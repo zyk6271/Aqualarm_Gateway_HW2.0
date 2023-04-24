@@ -54,8 +54,10 @@ void NormalSolve(int rssi,uint8_t *rx_buffer,uint8_t rx_len)
     Message_Format Rx_message;
     if(rx_buffer[rx_len]==0x0A&&rx_buffer[rx_len-1]==0x0D)
      {
-         sscanf((const char *)&rx_buffer[1],"{%ld,%ld,%d,%d,%d}",&Rx_message.Target_ID,&Rx_message.From_ID,&Rx_message.Counter,&Rx_message.Command,&Rx_message.Data);
-         if(Rx_message.Target_ID == Get_Self_ID())
+        rt_enter_critical();
+        sscanf((const char *)&rx_buffer[1],"{%ld,%ld,%d,%d,%d}",&Rx_message.Target_ID,&Rx_message.From_ID,&Rx_message.Counter,&Rx_message.Command,&Rx_message.Data);
+        rt_exit_critical();
+        if(Rx_message.Target_ID == Get_Self_ID())
          {
              if(Rx_message.From_ID == 98989898)
              {
@@ -87,7 +89,9 @@ void GatewaySyncSolve(int rssi,uint8_t *rx_buffer,uint8_t rx_len)
     Message_Format Rx_message;
     if(rx_buffer[rx_len]=='A')
     {
+        rt_enter_critical();
         sscanf((const char *)&rx_buffer[2],"{%d,%d,%ld,%ld,%ld,%d,%d}",&Rx_message.ack,&Rx_message.type,&Rx_message.Target_ID,&Rx_message.From_ID,&Rx_message.Payload_ID,&Rx_message.Rssi,&Rx_message.Data);
+        rt_exit_critical();
         if(Rx_message.Target_ID == Get_Self_ID() && Flash_Get_Key_Valid(Rx_message.From_ID) == RT_EOK)
         {
             LOG_D("GatewaySyncSolve buf is %s,rssi is %d\r\n",rx_buffer,rssi);
@@ -139,7 +143,9 @@ void GatewayWarningSolve(int rssi,uint8_t *rx_buffer,uint8_t rx_len)
     Message_Format Rx_message;
     if(rx_buffer[rx_len]=='B')
     {
+        rt_enter_critical();
         sscanf((const char *)&rx_buffer[2],"{%d,%ld,%ld,%ld,%d,%d,%d}",&Rx_message.ack,&Rx_message.Target_ID,&Rx_message.From_ID,&Rx_message.Payload_ID,&Rx_message.Rssi,&Rx_message.Command,&Rx_message.Data);
+        rt_exit_critical();
         if(Rx_message.Target_ID == Get_Self_ID() && Flash_Get_Key_Valid(Rx_message.From_ID) == RT_EOK)
         {
             LOG_D("GatewayWarningSolve buf %s,rssi is %d\r\n",rx_buffer,rssi);
@@ -198,7 +204,9 @@ void GatewayControlSolve(int rssi,uint8_t *rx_buffer,uint8_t rx_len)
     Message_Format Rx_message;
     if(rx_buffer[rx_len]=='C')
     {
+        rt_enter_critical();
         sscanf((const char *)&rx_buffer[2],"{%d,%ld,%ld,%ld,%d,%d,%d}",&Rx_message.ack,&Rx_message.Target_ID,&Rx_message.From_ID,&Rx_message.Payload_ID,&Rx_message.Rssi,&Rx_message.Command,&Rx_message.Data);
+        rt_exit_critical();
         if(Rx_message.Target_ID == Get_Self_ID() && Flash_Get_Key_Valid(Rx_message.From_ID) == RT_EOK)
         {
             LOG_D("GatewayControlSolve buf %s,rssi is %d\r\n",rx_buffer,rssi);

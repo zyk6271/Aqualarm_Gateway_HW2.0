@@ -1141,6 +1141,9 @@
         <name>$PROJ_DIR$/../Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_exti.c</name>
       </file>
       <file>
+        <name>$PROJ_DIR$/../Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_iwdg.c</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$/../Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_spi.c</name>
       </file>
       <file>

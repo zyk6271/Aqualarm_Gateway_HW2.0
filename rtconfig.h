@@ -94,6 +94,7 @@
 #define RT_USING_SFUD
 #define RT_SFUD_USING_SFDP
 #define RT_SFUD_SPI_MAX_HZ 50000000
+#define RT_USING_WDT
 
 /* Using USB */
 
@@ -171,6 +172,10 @@
 /* u8g2: a monochrome graphic library */
 
 /* end of u8g2: a monochrome graphic library */
+
+/* PainterEngine: A cross-platform graphics application framework written in C language */
+
+/* end of PainterEngine: A cross-platform graphics application framework written in C language */
 /* end of multimedia packages */
 
 /* tools packages */
@@ -202,17 +207,22 @@
 /* Micrium: Micrium software products porting for RT-Thread */
 
 /* end of Micrium: Micrium software products porting for RT-Thread */
+#define PKG_USING_SYSWATCH
+#define SYSWATCH_EXCEPT_RESOLVE_MODE_0
+#define SYSWATCH_EXCEPT_RESOLVE_MODE 0
+#define SYSWATCH_EXCEPT_TIMEOUT 60
+#define SYSWATCH_EXCEPT_CONFIRM_TMO 15
+#define SYSWATCH_EXCEPT_RESUME_DLY 15
+#define SYSWATCH_THREAD_PRIO 0
+#define SYSWATCH_THREAD_STK_SIZE 512
+#define SYSWATCH_THREAD_NAME "syswatch"
+#define SYSWATCH_WDT_NAME "wdt"
+#define SYSWATCH_WDT_TIMEOUT 5
+#define PKG_USING_SYSWATCH_LATEST_VERSION
 /* end of system packages */
 
 /* peripheral libraries and drivers */
 
-/* sensors drivers */
-
-/* end of sensors drivers */
-
-/* touch drivers */
-
-/* end of touch drivers */
 #define PKG_USING_BUTTON
 #define BUTTON_DEBOUNCE_TIME 1
 #define BUTTON_CONTINUOS_CYCLE 1
@@ -236,10 +246,6 @@
 
 /* end of AI packages */
 
-/* Signal Processing and Control Algorithm Packages */
-
-/* end of Signal Processing and Control Algorithm Packages */
-
 /* miscellaneous packages */
 
 /* project laboratory */
@@ -254,6 +260,47 @@
 
 /* end of entertainment: terminal games and other interesting software packages */
 /* end of miscellaneous packages */
+
+/* Arduino libraries */
+
+
+/* Projects */
+
+/* end of Projects */
+
+/* Sensors */
+
+/* end of Sensors */
+
+/* Display */
+
+/* end of Display */
+
+/* Timing */
+
+/* end of Timing */
+
+/* Data Processing */
+
+/* end of Data Processing */
+
+/* Data Storage */
+
+/* Communication */
+
+/* Device Control */
+
+/* end of Device Control */
+
+/* Other */
+
+/* Signal IO */
+
+/* end of Signal IO */
+
+/* Uncategorized */
+
+/* end of Arduino libraries */
 /* end of RT-Thread online packages */
 
 /* samples: kernel and components samples */

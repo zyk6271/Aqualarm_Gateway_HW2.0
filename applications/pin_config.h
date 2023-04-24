@@ -17,8 +17,8 @@
 #define TCXO_PWR_PIN                    16
 
 //BASIC
-#define Key0_PIN                4
-#define Key1_PIN                5
+#define Key0_PIN                5
+#define Key1_PIN                4
 #define LED1_PIN                15
 #define LED2_PIN                45
 #define LED3_PIN                0
